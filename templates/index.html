@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>Overview</h1>
+  <p>This tool generates shooting target including shot information with given parameters.</p>
+  <p>Try using this basic <a href="{{ url_for('picture') }}">example picture page</a></p>
+  <h2>Parameters</h2>
+  <dl>
+    <dt><b>x1, y1, x2, y2 ...</b></dt>
+    <dd>Coordinate pair values when numbers correspond. Coordinate values are with respect to the middle of the target. Can also be negative integer values. If both values are positive the shot is buttom right. It is recommended to use shot informations in multiples of 5 as this meets the table design. Example: <a href="{{ url_for('picture') }}?x1=150&y1=250">Shot bottom right</a></dd>
+    <dt><b>withtable</b></dt>
+    <dd>If this argument is set to <I>None</I> the table and the caculated center are discarded. Default is <b>True</b>. Example: <a href="{{ url_for('picture') }}?x1=-150&y1=-250&withtable=">No Table</a></dd>
+    <dt><b>withtenth</b></dt>
+    <dd>If this argument is set to <I>any value</I> the table contains tenths. This argument has only a effect if <i>withtable</i> is <b>true</b>. Default is <b>False</b>. Example: <a href="{{ url_for('picture') }}?x1=-150&y1=-250&withtenth=x">With tenth</a></dd>
+    <dt><b>type</b></dt>
+    <dd>This has influence on the type of target and its color. Following values can be used <b>b</b> - Default black; <b>r</b> - red; <b>g</b> - green. Here <b>r</b> has a special function, that the ring table is replaced by the best Teiler table. Default is <b>b</b>. Examples: <a href="{{ url_for('picture') }}?x1=-150&y1=250&type=g">Green target</a> <a href="{{ url_for('picture') }}?x1=150&y1=-250&type=r">Red target</a></dd>
+  </dl>
+  <h2>Examples</h2>
+  <ul>
+    <li><a href="{{ url_for('picture') }}?x1=150&y1=-160&x2=235&y2=-450&x3=-365&y3=850&x4=400&y4=-450&x5=255&y5=-455&x6=1&y6=3&x7=238&y7=-654&x8=-28&y8=-654&x9=28&y9=854&x10=-480&y10=-635&withtenth=x">Example with 10 shots</a></li>
+    <li><a href="{{ url_for('picture') }}?x1=150&y1=-160&x2=400&y2=-450&x3=255&y3=-455&x4=1&y4=3&x5=238&y5=-654&withtable=">Example with 5 shots</a></li>
+    <li><a href="{{ url_for('picture') }}?x1=150&y1=-160&x2=400&y2=-450&x3=255&y3=-455&x4=1&y4=3&x5=238&y5=-654&x6=1&y6=3">Example with 6 shots and not full table</a></li>
+    <li><a href="{{ url_for('picture') }}?x1=150&y1=-160&x2=235&y2=-450&x3=-365&y3=850&x4=400&y4=-450&x5=255&y5=-455&x6=1&y6=3&x7=238&y7=-654&x8=-28&y8=-654&x9=28&y9=854&x10=-480&y10=-635&withtenth=x&headline=46512 - 46513">Example with 10 shots and headline</a></li>
+  </ul>
+{% endblock %}
